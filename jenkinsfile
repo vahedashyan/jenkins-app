@@ -1,0 +1,18 @@
+pipline{
+    agent any
+    parameters {
+    choice {name: 'environment', choices: ['f01', 'f02', 'f03'], description: 'Please choose environment to deploy'}
+    }
+    stages {
+        stage('Env build'){
+           script{
+                ehco  "prepare to build"
+           }
+        }
+        stage('Deploy to choice'){
+            script{
+                echo "${params.environment}"
+            }
+        }
+    }
+}
