@@ -25,7 +25,7 @@ pipeline {
                           submoduleCfg: [],
                           userRemoteConfigs: [[url: 'https://github.com/vahedashyan/jenkins-app']]
                           ]);
-                    sh '''print.sh'''
+                    sh '''bash ./print.sh'''
                     echo "${params.host_name}";
                     echo "Done!";
                 }
