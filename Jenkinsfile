@@ -1,4 +1,4 @@
-pipline{
+pipeline{
     agent any
     parameters {
     choice(name: 'Host_name', choices: ['f01', 'f02', 'f03'], description: 'Please choose environment to deploy')
