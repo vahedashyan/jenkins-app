@@ -1,7 +1,7 @@
 pipline{
     agent any
     parameters {
-    choice {name: 'environment', choices: ['f01', 'f02', 'f03'], description: 'Please choose environment to deploy'}
+    choice {name: 'Host_name', choices: ['f01', 'f02', 'f03'], description: 'Please choose environment to deploy'}
     }
     stages {
         stage('Env build'){
