@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy to choice') {
             steps {
                 script {
-                    git branch: "${params.BRANCH}", url: 'https://github.com/jenkinsci/git-parameter-plugin.git'
+                git branch: "${params.BRANCH}", url: 'https://github.com/vahedashyan/jenkins-app'
                     sh '''bash ./print.sh'''
                     echo "${params.host_name}";
                     echo "Done!";
