@@ -7,7 +7,7 @@ pipeline {
         stage('Env build') {
             steps {
                 script {
-                    ehco "prepare to build";
+                    echo "prepare to build";
                 }
             }
         }
