@@ -2,7 +2,9 @@ pipeline {
     agent any
     parameters {
         choice(name: 'host_name', choices: ['f01', 'f02', 'f03'], description: 'Please choose environment to deploy');
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH';
+        gitParameter name: 'BRANCH_TAG',
+                     type: 'PT_BRANCH_TAG',
+                     defaultValue: 'master'
     }
     stages {
         stage('Env build') {
@@ -15,7 +17,14 @@ pipeline {
         stage('Deploy to choice') {
             steps {
                 script {
-                    git branch: "${params.BRANCH}", url: 'https://github.com/vahedashyan/jenkins-app';
+                checkout([$class: 'GitSCM',
+                          branches: [[name: "${params.BRANCH_TAG}"]],
+                          doGenerateSubmoduleConfigurations: false,
+                          extensions: [],
+                          gitTool: 'Default',
+                          submoduleCfg: [],
+                          userRemoteConfigs: [[url: 'https://github.com/vahedashyan/jenkins-app']]
+                          ]);
                     sh '''python main.py'''
                     echo "${params.host_name}";
                     echo "Done!";
