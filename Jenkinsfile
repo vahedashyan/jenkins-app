@@ -1,5 +1,6 @@
 pipeline {
-        agent { docker { image 'python:3.10.7-alpine' } }    parameters {
+    agent { docker { image 'python:3.10.7-alpine' } }
+    parameters {
         choice(name: 'host_name', choices: ['f01', 'f02', 'f03'], description: 'Please choose environment to deploy');
         gitParameter name: 'BRANCH_TAG',
                      type: 'PT_BRANCH_TAG',
